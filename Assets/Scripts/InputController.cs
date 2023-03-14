@@ -56,12 +56,3 @@ public enum InputMode {
     Navigate,
     Edit
 }
-
-public class InpuState {
-    public InputMode inputMode;
-    public Vector2Control pointerPosition;
-    public Vector2Control pointerDelta;
-    public ButtonControl panButton;
-    public ButtonControl orbitButton;
-    public ButtonControl waypointDropButton;
-}
