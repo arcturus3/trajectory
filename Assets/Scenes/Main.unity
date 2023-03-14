@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 695702739}
   - component: {fileID: 695702738}
   - component: {fileID: 695702740}
+  - component: {fileID: 695702741}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -153,84 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f22f8d8fb605e5fa97de48e182169e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointerPosition:
-    m_Name: Pointer Position
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 04b2ae22-54dc-4145-943a-55743740f054
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 031c3629-16f0-41ed-b08e-941302d50065
-      m_Path: <Mouse>/position
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Pointer Position
-      m_Flags: 0
-    m_Flags: 0
-  pointerMove:
-    m_Name: Pointer Move
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 63e78423-cbd1-4400-a852-794f2c49597a
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: a1530454-2932-451c-a29b-3bc20bb4b6c6
-      m_Path: <Mouse>/delta
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Pointer Move
-      m_Flags: 0
-    m_Flags: 0
-  panButton:
-    m_Name: Pan Button
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 260a280c-0b12-4921-b2a5-0182aab579d6
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: d08d2f3e-3ecb-4860-8446-a5e7036278b4
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Pan Button
-      m_Flags: 0
-    m_Flags: 0
-  orbitButton:
-    m_Name: Orbit Button
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: effabfd3-1c8d-43d2-8b26-e1c81b8a3ef1
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 6f7add71-c6ee-479b-8fd0-e450242ac11f
-      m_Path: <Mouse>/rightButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Orbit Button
-      m_Flags: 0
-    m_Flags: 0
-  setWaypointButton:
-    m_Name: Set Waypoint Button
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 4b6a0eaf-ab03-4300-b74f-93d3fe5b13f3
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  waypointMarker: {fileID: 6537867830851186344, guid: 7ab2931bd6c090da5b1c75d0dd935b9e, type: 3}
 --- !u!4 &695702739
 Transform:
   m_ObjectHideFlags: 0
@@ -258,7 +181,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad5480e2f2b85cd9aa11a299508f98a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  marker: {fileID: 6537867830851186344, guid: 7ab2931bd6c090da5b1c75d0dd935b9e, type: 3}
+  waypointMarker: {fileID: 6537867830851186344, guid: 7ab2931bd6c090da5b1c75d0dd935b9e, type: 3}
+--- !u!114 &695702741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695702737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e5983c1790a327b4a87a1a8fbee5dcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &785288112
 GameObject:
   m_ObjectHideFlags: 0

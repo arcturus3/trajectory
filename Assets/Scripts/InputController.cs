@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 
 public class InputController : MonoBehaviour
 {
@@ -24,24 +23,24 @@ public class InputController : MonoBehaviour
     }
 
     private void Update() {
-        onPointerMove.Invoke(
+        onPointerMove?.Invoke(
             Mouse.current.position.value,
             Mouse.current.delta.value
         );
         switch (inputMode) {
             case InputMode.Navigate:
                 if (Mouse.current.leftButton.wasPressedThisFrame)
-                    onPanStart.Invoke();
+                    onPanStart?.Invoke();
                 if (Mouse.current.leftButton.wasReleasedThisFrame)
-                    onPanEnd.Invoke();
+                    onPanEnd?.Invoke();
                 if (Mouse.current.rightButton.wasPressedThisFrame)
-                    onOrbitStart.Invoke();
+                    onOrbitStart?.Invoke();
                 if (Mouse.current.rightButton.wasReleasedThisFrame)
-                    onOrbitEnd.Invoke();
+                    onOrbitEnd?.Invoke();
                 break;
             case InputMode.Edit:
                 if (Mouse.current.leftButton.wasReleasedThisFrame)
-                    onWaypointDrop.Invoke();
+                    onWaypointDrop?.Invoke();
                 break;
         }
     }
