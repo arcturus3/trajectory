@@ -1,0 +1,21 @@
+.container {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+}
+
+.button {
+    width: 100px;
+    height: 30px;
+    padding: 10px;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 10px;
+    color: black;
+    background-color: white;
+}
+
+.selected {
+    color: white;
+    background-color: black;
+}

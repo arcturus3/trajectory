@@ -8,7 +8,7 @@ public class InputController : MonoBehaviour
     public InputAction pointerMove;
     public InputAction panButton;
     public InputAction orbitButton;
-    public InputAction waypointSetButton;
+    public InputAction setWaypointButton;
     public GameObject waypointMarker;
     private GameObject camera;
     private GameObject cameraAnchor;
@@ -21,14 +21,16 @@ public class InputController : MonoBehaviour
         pointerMove.Enable();
         panButton.Enable();
         orbitButton.Enable();
-        waypointSetButton.Enable();
+        setWaypointButton.Enable();
+
+        UI.onInputModeChange += SetInputMode;
     }
 
     private void OnDisable() {
         pointerMove.Disable();
         panButton.Disable();
         orbitButton.Disable();
-        waypointSetButton.Disable();
+        setWaypointButton.Disable();
     }
 
     private void Start() {
@@ -38,7 +40,6 @@ public class InputController : MonoBehaviour
     }
 
     private void Update() {
-        SetInputMode();
         switch (inputMode) {
             case InputMode.Navigate:
                 HandlePan();
@@ -46,20 +47,14 @@ public class InputController : MonoBehaviour
                 HandleZoom();
                 break;
             case InputMode.Edit:
-                HandleWaypointSet();
+                HandleSetWaypoint();
                 break;
         }
     }
 
-    private void SetInputMode() {
-        if (Keyboard.current.nKey.wasPressedThisFrame) {
-            inputMode = InputMode.Navigate;
-            waypointPreview.SetActive(false);
-        }
-        if (Keyboard.current.eKey.wasPressedThisFrame) {
-            inputMode = InputMode.Edit;
-            waypointPreview.SetActive(true);
-        }
+    private void SetInputMode(InputMode mode) {
+        inputMode = mode;
+        waypointPreview.SetActive(mode == InputMode.Edit);
     }
 
     private void HandlePan() {
@@ -89,7 +84,7 @@ public class InputController : MonoBehaviour
 
     }
 
-    private void HandleWaypointSet() {
+    private void HandleSetWaypoint() {
         Vector2 position = pointerPosition.ReadValue<Vector2>();
         Ray ray = Camera.main.ScreenPointToRay(position);
         RaycastHit hit;
@@ -97,7 +92,7 @@ public class InputController : MonoBehaviour
         if (success) {
             waypointPreview.SetActive(true);
             waypointPreview.transform.position = hit.point;
-            if (waypointSetButton.WasPressedThisFrame()) {
+            if (setWaypointButton.WasPressedThisFrame()) {
                 GameObject waypoint = Instantiate(waypointMarker);
                 waypoint.transform.position = hit.point;
                 waypoints.Add(waypoint);
@@ -117,9 +112,9 @@ public class InputController : MonoBehaviour
         float angle = cameraAnchor.transform.rotation.eulerAngles.y;
         return Quaternion.Euler(0, angle, 0) * Vector3.right;
     }
+}
 
-    private enum InputMode {
-        Navigate,
-        Edit
-    }
+public enum InputMode {
+    Navigate,
+    Edit
 }

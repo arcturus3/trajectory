@@ -220,22 +220,14 @@ MonoBehaviour:
       m_Action: Orbit Button
       m_Flags: 0
     m_Flags: 0
-  waypointSetButton:
-    m_Name: Waypoint Set Button
+  setWaypointButton:
+    m_Name: Set Waypoint Button
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: ac698bf2-90e6-4341-91eb-b7435b4c48e8
+    m_Id: 4b6a0eaf-ab03-4300-b74f-93d3fe5b13f3
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 9592003f-2e74-4b84-9f21-a17b811ab214
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Waypoint Set Button
-      m_Flags: 0
+    m_SingletonActionBindings: []
     m_Flags: 0
   waypointMarker: {fileID: 6537867830851186344, guid: 7ab2931bd6c090da5b1c75d0dd935b9e, type: 3}
 --- !u!4 &695702739
@@ -252,6 +244,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &785288112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 785288115}
+  - component: {fileID: 785288114}
+  - component: {fileID: 785288113}
+  m_Layer: 5
+  m_Name: UIDocument
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &785288113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785288112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59b557536eb45b4bb3a1f6252921d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &785288114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785288112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: db8c28cff843940e69b29ce70e303239, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 159a6e74472d43365be394bfbbf9f473, type: 3}
+  m_SortingOrder: 0
+--- !u!4 &785288115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785288112}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &787604614
 GameObject:
