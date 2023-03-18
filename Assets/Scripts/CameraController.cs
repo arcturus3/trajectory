@@ -1,10 +1,11 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
     private bool panning;
     private bool orbiting;
-
     private Transform cameraTransform;
     private Transform cameraAnchorTransform;
 

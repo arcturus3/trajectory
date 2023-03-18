@@ -1,8 +1,11 @@
+using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Waypoints : MonoBehaviour
 {
+    public static event Action<List<Vector3>> onWaypointsChange;
     public GameObject waypointMarker;
 
     private bool active;
@@ -92,6 +95,9 @@ public class Waypoints : MonoBehaviour
                 waypoint.transform.position = dropPoint;
                 waypoints.Add(waypoint);
                 dropStage = DropStage.Horizontal;
+                onWaypointsChange.Invoke(waypoints.Select(
+                    waypoint => waypoint.transform.position
+                ).ToList());
                 break;
         }
     }
