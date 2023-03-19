@@ -15,10 +15,11 @@ public class Client : IDisposable {
         socket.Close();
     }
 
-    public void Request() {
-        Debug.Log("sending request...");
-        socket.SendFrame("hello!");
+    public string SendRequest(string request) {
+        socket.SendFrame(request);
+        Debug.Log($"sent: {request}");
         string response = socket.ReceiveFrameString();
-        Debug.Log($"received response: {response}");
+        Debug.Log($"received: {response}");
+        return response;
     }
 }
