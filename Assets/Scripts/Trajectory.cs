@@ -37,6 +37,6 @@ public class Trajectory {
         float x = response.Position[0];
         float y = response.Position[1];
         float z = response.Position[2];
-        return new Vector3(x, y, z);
+        return new Vector3(x, z, y);
     }
 }
