@@ -26,7 +26,7 @@ public class Trajectory {
         id = response.TrajectoryId;
     }
 
-    public Vector3 GetPosition(float time) {
+    public (Vector3, Vector3) GetPose(float time) {
         QueryRequest request = new QueryRequest() {
             TrajectoryId = id,
             Time = time
@@ -34,13 +34,17 @@ public class Trajectory {
         string requestString = JsonSerializer.Serialize(request);
         string responseString = client.SendRequest(requestString);
         QueryResponse response = JsonSerializer.Deserialize<QueryResponse>(responseString);
-        float x = response.Position[0];
-        float y = response.Position[1];
-        float z = response.Position[2];
-        return new Vector3(x, z, y);
+        return (ConvertPoint(response.Position), ConvertPoint(response.Normal));
     }
 
     public float GetDuration() {
         return 5f;
+    }
+
+    private Vector3 ConvertPoint(List<float> point) {
+        float x = point[0];
+        float y = point[1];
+        float z = point[2];
+        return new Vector3(x, z, y);
     }
 }

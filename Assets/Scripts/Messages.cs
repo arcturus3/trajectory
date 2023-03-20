@@ -30,6 +30,8 @@ public class QueryResponse {
     public string MessageType {get;} = "query_response";
     [JsonPropertyName("position")]
     public List<float> Position {get; set;}
+    [JsonPropertyName("normal")]
+    public List<float> Normal {get; set;}
 }
 
 public class MessageWaypoint {

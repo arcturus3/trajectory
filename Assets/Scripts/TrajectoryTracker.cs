@@ -13,7 +13,8 @@ public class TrajectoryTracker : MonoBehaviour
     private void Start() {
         Client client = new Client();
         Waypoint initialWaypoint = new Waypoint(new Vector3(0, 0, 1));
-        Waypoint finalWaypoint = new Waypoint(new Vector3(2, 0, 1));
+        Waypoint finalWaypoint = new Waypoint(new Vector3(10, 0, 1));
+        // Waypoint finalWaypoint = new Waypoint(new Vector3(2, 0, 1));
         List<Waypoint> waypoints = new List<Waypoint>() {initialWaypoint, finalWaypoint};
         trajectory = new Trajectory(client, waypoints);
 
@@ -51,7 +52,9 @@ public class TrajectoryTracker : MonoBehaviour
                 onTrackingComplete?.Invoke();
             }
             else {
-                transform.position = trajectory.GetPosition(time);
+                (Vector3 position, Vector3 normal) = trajectory.GetPose(time);
+                transform.position = position;
+                transform.up = normal;
             }
         }
     }
