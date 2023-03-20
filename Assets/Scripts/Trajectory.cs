@@ -39,4 +39,8 @@ public class Trajectory {
         float z = response.Position[2];
         return new Vector3(x, z, y);
     }
+
+    public float GetDuration() {
+        return 5f;
+    }
 }
