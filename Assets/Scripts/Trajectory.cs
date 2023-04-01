@@ -11,14 +11,15 @@ public class Trajectory {
     public Trajectory(Client client, List<Waypoint> waypoints) {
         this.client = client;
         this.waypoints = waypoints;
+        List<MessageWaypoint> messageWaypoints = new List<MessageWaypoint>();
+        foreach (Waypoint waypoint in waypoints) {
+            messageWaypoints.Add(new MessageWaypoint() {
+                Position = ConvertPointRequest(waypoint.Position),
+                Time = waypoint.Time
+            });
+        }
         GenerateRequest request = new GenerateRequest() {
-            Waypoints = waypoints.Select(waypoint => new MessageWaypoint{
-                Position = new List<float>() {
-                    waypoint.position.x,
-                    waypoint.position.y,
-                    waypoint.position.z
-                }
-            }).ToList()
+            Waypoints = messageWaypoints.ToList()
         };
         string requestString = JsonSerializer.Serialize(request);
         string responseString = client.SendRequest(requestString);
@@ -34,17 +35,21 @@ public class Trajectory {
         string requestString = JsonSerializer.Serialize(request);
         string responseString = client.SendRequest(requestString);
         QueryResponse response = JsonSerializer.Deserialize<QueryResponse>(responseString);
-        return (ConvertPoint(response.Position), ConvertPoint(response.Normal));
+        return (ConvertPointResponse(response.Position), ConvertPointResponse(response.Normal));
     }
 
     public float GetDuration() {
-        return 5f;
+        return waypoints.Last().Time;
     }
 
-    private Vector3 ConvertPoint(List<float> point) {
+    private Vector3 ConvertPointResponse(List<float> point) {
         float x = point[0];
         float y = point[1];
         float z = point[2];
         return new Vector3(x, z, y);
+    }
+
+    private List<float> ConvertPointRequest(Vector3 point) {
+        return new List<float>() {point.x, point.z, point.y};
     }
 }

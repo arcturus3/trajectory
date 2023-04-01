@@ -95,9 +95,11 @@ public class Waypoints : MonoBehaviour
                 waypoint.transform.position = dropPoint;
                 waypoints.Add(waypoint);
                 dropStage = DropStage.Horizontal;
-                onWaypointsChange.Invoke(waypoints.Select(
+                onWaypointsChange?.Invoke(waypoints.Select(
                     waypoint => waypoint.transform.position
                 ).ToList());
+                List<Vector3> constraints = waypoints.Select(waypoint => waypoint.transform.position).ToList();
+                State.Instance.SetConstraints(constraints);
                 break;
         }
     }

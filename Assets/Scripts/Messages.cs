@@ -37,4 +37,6 @@ public class QueryResponse {
 public class MessageWaypoint {
     [JsonPropertyName("position")]
     public List<float> Position {get; set;}
+    [JsonPropertyName("time")]
+    public float Time {get; set;}
 }
