@@ -1,21 +1,28 @@
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Linq;
 using UnityEngine;
 
-public class Trajectory {
+[ExecuteAlways]
+public class Trajectory : MonoBehaviour {
     private Client client;
-    private List<Waypoint> waypoints;
     private int id;
+    private List<Constraint> constraints;
 
-    public Trajectory(Client client, List<Waypoint> waypoints) {
-        this.client = client;
-        this.waypoints = waypoints;
+    public event Action Generated;
+
+    private void Awake() {
+        client = new Client();
+    }
+
+    public void Generate() {
+        constraints = GetComponentsInChildren<Constraint>().ToList();
         List<MessageWaypoint> messageWaypoints = new List<MessageWaypoint>();
-        foreach (Waypoint waypoint in waypoints) {
+        foreach (Constraint constraint in constraints) {
             messageWaypoints.Add(new MessageWaypoint() {
-                Position = ConvertPointRequest(waypoint.Position),
-                Time = waypoint.Time
+                Position = ConvertPointRequest(constraint.gameObject.transform.position),
+                Time = constraint.Time
             });
         }
         GenerateRequest request = new GenerateRequest() {
@@ -25,6 +32,8 @@ public class Trajectory {
         string responseString = client.SendRequest(requestString);
         GenerateResponse response = JsonSerializer.Deserialize<GenerateResponse>(responseString);
         id = response.TrajectoryId;
+        Debug.Log(constraints.Last());
+        Generated?.Invoke();
     }
 
     public (Vector3, Vector3) GetPose(float time) {
@@ -39,7 +48,7 @@ public class Trajectory {
     }
 
     public float GetDuration() {
-        return waypoints.Last().Time;
+        return constraints.Last().Time;
     }
 
     private Vector3 ConvertPointResponse(List<float> point) {

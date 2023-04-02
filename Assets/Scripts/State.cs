@@ -41,7 +41,7 @@ public class State {
                     Time = segmentDuration * i
                 });
             }
-            trajectory = new Trajectory(client, waypoints);
+            // trajectory = new Trajectory(client, waypoints);
         }
         else {
             trajectory = null;

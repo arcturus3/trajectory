@@ -1,29 +1,14 @@
-using System;
-using System.Linq;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
-public class TrajectoryEditor : MonoBehaviour {
-    public List<Vector3> constraints;
-    public Trajectory trajectory;
-    Client client;
+[CustomEditor(typeof(Trajectory))]
+public class TrajectoryEditor : Editor {
 
-    private void Start() {
-        constraints = new List<Vector3>();
-        client = new Client();
+    public override void OnInspectorGUI() {
+        DrawDefaultInspector();
+        Trajectory trajectory = (Trajectory) target;
+        if (GUILayout.Button("Generate")) {
+            trajectory.Generate();
+        }
     }
-
-    private void OnEnable() {
-        Waypoints.onWaypointsChange += HandleConstraintsChange;
-    }
-
-    private void OnDisable() {
-        Waypoints.onWaypointsChange -= HandleConstraintsChange;
-    }
-
-    private void HandleConstraintsChange(List<Vector3> constraints) {
-        this.constraints = constraints;
-    }
-
-
 }
