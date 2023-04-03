@@ -7,21 +7,16 @@ public class TrajectoryRenderer : MonoBehaviour {
     private LineRenderer lineRenderer;
     private const float pointsPerSecond = 10;
 
-    private void Awake() {
+    private void Start() {
         trajectory = GetComponent<Trajectory>();
         lineRenderer = GetComponent<LineRenderer>();
-    }
-
-    private void OnEnable() {
         trajectory.Generated += Render;
     }
 
-    private void OnDisable() {
-        trajectory.Generated -= Render;
-    }
-
     private void Render() {
+        Debug.Log("render");
         float duration = trajectory.GetDuration();
+        Debug.Log(duration);
         int points = Mathf.RoundToInt(duration * pointsPerSecond);
         List<Vector3> positions = new List<Vector3>();
         for (int i = 0; i < points; i++) {

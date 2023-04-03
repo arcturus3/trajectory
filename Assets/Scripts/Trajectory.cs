@@ -4,7 +4,6 @@ using System.Text.Json;
 using System.Linq;
 using UnityEngine;
 
-[ExecuteAlways]
 public class Trajectory : MonoBehaviour {
     private Client client;
     private int id;
@@ -12,7 +11,7 @@ public class Trajectory : MonoBehaviour {
 
     public event Action Generated;
 
-    private void Awake() {
+    private void Start() {
         client = new Client();
     }
 
@@ -32,7 +31,6 @@ public class Trajectory : MonoBehaviour {
         string responseString = client.SendRequest(requestString);
         GenerateResponse response = JsonSerializer.Deserialize<GenerateResponse>(responseString);
         id = response.TrajectoryId;
-        Debug.Log(constraints.Last());
         Generated?.Invoke();
     }
 

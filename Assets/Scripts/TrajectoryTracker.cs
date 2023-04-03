@@ -4,50 +4,47 @@ using UnityEngine;
 
 public class TrajectoryTracker : MonoBehaviour
 {
-    public static event Action onTrackingComplete;
-
-    private bool tracking;
+    [SerializeField]
+    private Trajectory trajectory;
     private float startTime;
+    public bool Tracking {get; private set;}
 
     private void Start() {
-        tracking = false;
+        Tracking = false;
         startTime = 0;
-        GetComponent<Renderer>().enabled = false;
+        SetVisible(false);
     }
 
-    private void OnEnable() {
-        UI.onTrackingStart += StartTracking;
-        UI.onTrackingStop += StopTracking;
-    }
-
-    private void OnDisable() {
-        UI.onTrackingStart -= StartTracking;
-        UI.onTrackingStop -= StopTracking;
-    }
-
-    private void StartTracking() {
-        tracking = true;
+    public void StartTracking() {
+        Tracking = true;
         startTime = Time.time;
-        GetComponent<Renderer>().enabled = true;
+        SetVisible(true);
     }
 
-    private void StopTracking() {
-        tracking = false;
-        GetComponent<Renderer>().enabled = false;
+    public void StopTracking() {
+        Tracking = false;
+        SetVisible(false);
     }
 
     private void Update() {
-        if (tracking) {
+        if (Tracking) {
             float time = Time.time - startTime;
-            if (time > State.Instance.Trajectory.GetDuration()) {
+            Debug.Log(time);
+            Debug.Log(trajectory.GetPose(time));
+            if (time > trajectory.GetDuration()) {
                 StopTracking();
-                onTrackingComplete?.Invoke();
             }
             else {
-                (Vector3 position, Vector3 normal) = State.Instance.Trajectory.GetPose(time);
+                (Vector3 position, Vector3 normal) = trajectory.GetPose(time);
                 transform.position = position;
                 transform.up = normal;
             }
+        }
+    }
+
+    private void SetVisible(bool visible) {
+        foreach (Transform child in transform) {
+            child.gameObject.SetActive(visible);
         }
     }
 }
