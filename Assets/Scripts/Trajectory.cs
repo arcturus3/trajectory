@@ -31,7 +31,12 @@ public class Trajectory : MonoBehaviour {
         string responseString = client.SendRequest(requestString);
         GenerateResponse response = JsonSerializer.Deserialize<GenerateResponse>(responseString);
         id = response.TrajectoryId;
-        Generated?.Invoke();
+        if (response.Feasible) {
+            Generated?.Invoke();
+        }
+        else {
+            Debug.LogWarning("Trajectory is infeasible");
+        }
     }
 
     public (Vector3, Vector3) GetPose(float time) {

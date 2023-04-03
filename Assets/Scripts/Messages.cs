@@ -14,6 +14,8 @@ public class GenerateResponse {
     public string MessageType {get;} = "generate_response";
     [JsonPropertyName("trajectory_id")]
     public int TrajectoryId {get; set;}
+    [JsonPropertyName("feasible")]
+    public bool Feasible {get; set;}
 }
 
 public class QueryRequest {
