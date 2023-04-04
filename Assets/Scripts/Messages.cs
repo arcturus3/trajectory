@@ -6,7 +6,18 @@ public class GenerateRequest
     [JsonPropertyName("message_type")]
     public string MessageType {get;} = "generate_request";
     [JsonPropertyName("waypoints")]
-    public List<MessageWaypoint> Waypoints {get; set;}
+    public List<ConstraintMessage> Constraints {get; set;}
+}
+
+public class ConstraintMessage {
+    [JsonPropertyName("position")]
+    public List<float> Position {get; set;}
+    [JsonPropertyName("rotation")]
+    public List<List<float>> Rotation {get; set;}
+    [JsonPropertyName("time")]
+    public float Time {get; set;}
+    [JsonPropertyName("constrain_rotation")]
+    public bool ConstrainRotation {get; set;}
 }
 
 public class GenerateResponse {
@@ -34,15 +45,4 @@ public class QueryResponse {
     public List<float> Position {get; set;}
     [JsonPropertyName("normal")]
     public List<float> Normal {get; set;}
-}
-
-public class MessageWaypoint {
-    [JsonPropertyName("position")]
-    public List<float> Position {get; set;}
-    [JsonPropertyName("rotation")]
-    public List<float> Rotation {get; set;}
-    [JsonPropertyName("time")]
-    public float Time {get; set;}
-    [JsonPropertyName("constrain_rotation")]
-    public bool ConstrainRotation {get; set;}
 }
