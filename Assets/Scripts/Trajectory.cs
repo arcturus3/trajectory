@@ -20,8 +20,10 @@ public class Trajectory : MonoBehaviour {
         List<MessageWaypoint> messageWaypoints = new List<MessageWaypoint>();
         foreach (Constraint constraint in constraints) {
             messageWaypoints.Add(new MessageWaypoint() {
-                Position = ConvertPointRequest(constraint.gameObject.transform.position),
-                Time = constraint.Time
+                Position = ConvertPointRequest(constraint.transform.position),
+                Rotation = ConvertPointRequest(constraint.transform.eulerAngles),
+                Time = constraint.Time,
+                ConstrainRotation = constraint.ConstrainRotation
             });
         }
         GenerateRequest request = new GenerateRequest() {
