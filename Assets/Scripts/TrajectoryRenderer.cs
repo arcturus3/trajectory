@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteAlways]
 public class TrajectoryRenderer : MonoBehaviour {
     private Trajectory trajectory;
     private LineRenderer lineRenderer;
@@ -14,9 +13,7 @@ public class TrajectoryRenderer : MonoBehaviour {
     }
 
     private void Render() {
-        Debug.Log("render");
         float duration = trajectory.GetDuration();
-        Debug.Log(duration);
         int points = Mathf.RoundToInt(duration * pointsPerSecond);
         List<Vector3> positions = new List<Vector3>();
         for (int i = 0; i < points; i++) {
