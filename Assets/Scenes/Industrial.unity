@@ -4486,11 +4486,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 602416156725139704, guid: ea8460876bc78f59b8e246157ac7aaa6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3a46379d101ec2fa3ada4c26c1a6fe48, type: 2}
+    - target: {fileID: 1011423908252420445, guid: ea8460876bc78f59b8e246157ac7aaa6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3a46379d101ec2fa3ada4c26c1a6fe48, type: 2}
+    - target: {fileID: 1212946105498207462, guid: ea8460876bc78f59b8e246157ac7aaa6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3a46379d101ec2fa3ada4c26c1a6fe48, type: 2}
+    - target: {fileID: 3027641777308056210, guid: ea8460876bc78f59b8e246157ac7aaa6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3a46379d101ec2fa3ada4c26c1a6fe48, type: 2}
     - target: {fileID: 5638954357746531306, guid: ea8460876bc78f59b8e246157ac7aaa6, type: 3}
       propertyPath: m_Name
       value: Constraint
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 777629423532812311, guid: ea8460876bc78f59b8e246157ac7aaa6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ea8460876bc78f59b8e246157ac7aaa6, type: 3}
 --- !u!4 &136356824 stripped
 Transform:
@@ -11635,6 +11652,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 720893990497726389, guid: 6d004b3e48b85cf90a127ce103c714b7, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 976041139321228248, guid: 6d004b3e48b85cf90a127ce103c714b7, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375184411940867645, guid: 6d004b3e48b85cf90a127ce103c714b7, type: 3}
+      propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
