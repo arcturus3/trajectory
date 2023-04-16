@@ -29,8 +29,6 @@ public class TrajectoryTracker : MonoBehaviour
     private void Update() {
         if (Tracking) {
             float time = Time.time - startTime;
-            Debug.Log(time);
-            Debug.Log(trajectory.GetPose(time));
             if (time > trajectory.GetDuration()) {
                 StopTracking();
             }
