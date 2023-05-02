@@ -72,6 +72,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Mine
-/Assets/Plugins/
-/Assets/Plugins.meta
-/Assets/Models
+# /Assets/Plugins/
+# /Assets/Plugins.meta
+# /Assets/Models
